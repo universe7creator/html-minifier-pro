@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Minifier Pro - Optimize Your Code</title>
+  <meta name="description" content="Minify HTML, CSS & JavaScript instantly. Reduce file size, improve load times, optimize for production.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          animation: {
+            'gradient': 'gradient 8s ease infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    .glass-dark { background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+    .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5), 0 0 40px rgba(118, 75, 162, 0.3); }
+    .btn-glow:hover { box-shadow: 0 0 30px rgba(102, 126, 234, 0.6), 0 0 60px rgba(118, 75, 162, 0.4); }
+    .code-editor { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">&lt;/&gt;</span>
+          </div>
+          <span class="font-bold text-xl">HTML Minifier Pro</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-gray-300 hover:text-white transition">Features</a>
+          <a href="#demo" class="text-gray-300 hover:text-white transition">Demo</a>
+          <a href="#pricing" class="text-gray-300 hover:text-white transition">Pricing</a>
+          <a href="#faq" class="text-gray-300 hover:text-white transition">FAQ</a>
+        </div>
+        <button id="navBuyBtn" class="bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-2 rounded-full font-medium btn-glow transition">
+          Buy Now
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-purple-900/10 to-fuchsia-900/20"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute top-40 right-10 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+
+    <div class="relative max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-8">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        <span class="text-sm text-gray-300">Trusted by 2,500+ developers</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        <span class="gradient-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+          Minify. Optimize. Deploy.
+        </span>
+      </h1>
+
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10">
+        Reduce your HTML, CSS & JavaScript file sizes by up to <span class="text-violet-400 font-semibold">70%</span>.
+        Faster load times, better SEO, happier users.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <button id="heroBuyBtn" class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 px-8 py-4 rounded-full font-semibold text-lg btn-glow transition transform hover:scale-105">
+          Get HTML Minifier Pro — $9
+        </button>
+        <a href="#demo" class="glass px-8 py-4 rounded-full font-medium hover:bg-white/10 transition">
+          Try Demo Free
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">70%</div>
+          <div class="text-gray-400">Average Size Reduction</div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">2.5s</div>
+          <div class="text-gray-400">Faster Page Load</div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">100%</div>
+          <div class="text-gray-400">Code Integrity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Everything You Need</h2>
+        <p class="text-gray-400 text-lg">Professional-grade minification for modern web development</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-violet-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">📄</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">HTML Minification</h3>
+          <p class="text-gray-400">Remove whitespace, comments, and optional attributes. Collapse inline styles and scripts.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-fuchsia-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">🎨</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">CSS Optimization</h3>
+          <p class="text-gray-400">Clean-css powered minification with level 2 optimizations. Merge duplicate rules.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">JavaScript Minify</h3>
+          <p class="text-gray-400">UglifyJS integration for dead code elimination, variable mangling, and compression.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Size Analytics</h3>
+          <p class="text-gray-400">Detailed before/after statistics. See exactly how much you save with percentage breakdown.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">🔒</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Privacy First</h3>
+          <p class="text-gray-400">All processing happens server-side securely. Your code is never stored or shared.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition group">
+          <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <span class="text-2xl">🚀</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">API Access</h3>
+          <p class="text-gray-400">Programmatic access with simple HTTP API. Integrate into your build pipeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Try It Now</h2>
+        <p class="text-gray-400 text-lg">Paste your code and see the magic happen instantly</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Input -->
+        <div class="glass-dark rounded-2xl p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-lg">Input</h3>
+            <select id="typeSelect" class="bg-white/10 border border-white/20 rounded-lg px-3 py-1 text-sm">
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="js">JavaScript</option>
+            </select>
+          </div>
+          <textarea id="inputCode" class="w-full h-64 bg-[#1a1a1a] rounded-xl p-4 code-editor text-sm text-gray-300 resize-none focus:outline-none focus:ring-2 focus:ring-violet-500" placeholder="Paste your code here..."><!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <style>
+    body {
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <p>This is a test paragraph.</p>
+</body>
+</html></textarea>
+          <button id="minifyBtn" class="mt-4 w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 py-3 rounded-xl font-medium btn-glow transition">
+            Minify Code
+          </button>
+        </div>
+
+        <!-- Output -->
+        <div class="glass-dark rounded-2xl p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-lg">Output</h3>
+            <button id="copyBtn" class="text-sm text-violet-400 hover:text-violet-300 transition">Copy</button>
+          </div>
+          <textarea id="outputCode" class="w-full h-64 bg-[#1a1a1a] rounded-xl p-4 code-editor text-sm text-gray-300 resize-none focus:outline-none" readonly placeholder="Minified code will appear here..."></textarea>
+
+          <!-- Stats -->
+          <div id="statsContainer" class="mt-4 hidden">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="glass rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-400">Original</div>
+                <div id="originalSize" class="font-mono font-semibold">0 B</div>
+              </div>
+              <div class="glass rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-400">Minified</div>
+                <div id="minifiedSize" class="font-mono font-semibold text-green-400">0 B</div>
+              </div>
+              <div class="glass rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-400">Saved</div>
+                <div id="savingsPercent" class="font-mono font-semibold text-violet-400">0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Simple Pricing</h2>
+        <p class="text-gray-400 text-lg">One-time payment. Lifetime access.</p>
+      </div>
+
+      <div class="glass rounded-3xl p-8 border-2 border-violet-500/50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-gradient-to-bl from-violet-500 to-fuchsia-500 text-white text-sm font-medium px-4 py-1 rounded-bl-xl">
+          Most Popular
+        </div>
+
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold mb-2">HTML Minifier Pro</h3>
+          <p class="text-gray-400 mb-6">Complete minification suite</p>
+          <div class="flex items-center justify-center">
+            <span class="text-5xl font-bold">$9</span>
+            <span class="text-gray-400 ml-2">one-time</span>
+          </div>
+        </div>
+
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> HTML minification</li>
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> CSS optimization</li>
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> JavaScript minification</li>
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> Size analytics</li>
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> API access</li>
+          <li class="flex items-center"><span class="text-green-400 mr-3">✓</span> Lifetime updates</li>
+        </ul>
+
+        <button id="pricingBuyBtn" class="w-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 py-4 rounded-xl font-semibold text-lg btn-glow transition transform hover:scale-105">
+          Get Instant Access — $9
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+        <p class="text-gray-400 text-lg">Got questions? We've got answers.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold text-lg mb-2">What file types are supported?</h3>
+          <p class="text-gray-400">HTML Minifier Pro supports HTML, CSS, and JavaScript files. You can minify each type individually or work with combined HTML files that contain inline CSS and JavaScript.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold text-lg mb-2">Is my code secure?</h3>
+          <p class="text-gray-400">Absolutely. All processing happens securely on our servers. Your code is never stored permanently, logged, or shared with third parties. We process and return results immediately.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold text-lg mb-2">Can I use this in my CI/CD pipeline?</h3>
+          <p class="text-gray-400">Yes! HTML Minifier Pro includes a simple HTTP API that you can integrate into your build process. Use your license key for authenticated access in automated workflows.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold text-lg mb-2">What minification algorithms are used?</h3>
+          <p class="text-gray-400">We use industry-standard libraries: html-minifier-terser for HTML, CleanCSS for CSS, and UglifyJS for JavaScript. These are the same tools used by major tech companies.</p>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold text-lg mb-2">Do I get free updates?</h3>
+          <p class="text-gray-400">Yes, your one-time purchase includes lifetime access and updates. As we add new features and optimizations, you'll automatically have access to them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="glass rounded-3xl p-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20"></div>
+        <div class="relative">
+          <h2 class="text-4xl font-bold mb-4">Ready to Optimize?</h2>
+          <p class="text-gray-400 text-lg mb-8">Join 2,500+ developers who trust HTML Minifier Pro</p>
+          <button id="ctaBuyBtn" class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 px-10 py-4 rounded-full font-semibold text-lg btn-glow transition transform hover:scale-105">
+            Get HTML Minifier Pro — $9
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-2 mb-4 md:mb-0">
+          <div class="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">&lt;/&gt;</span>
+          </div>
+          <span class="font-bold text-xl">HTML Minifier Pro</span>
+        </div>
+        <div class="text-gray-400 text-sm">
+          © 2024 HTML Minifier Pro. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Checkout URLs
+    const CHECKOUT_URL = 'https://profitbridge.lemonsqueezy.com/checkout/buy/html-minifier-pro-001';
+
+    // Buy button handlers
+    document.querySelectorAll('#navBuyBtn, #heroBuyBtn, #pricingBuyBtn, #ctaBuyBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.open(CHECKOUT_URL, '_blank');
+      });
+    });
+
+    // Demo functionality
+    const minifyBtn = document.getElementById('minifyBtn');
+    const inputCode = document.getElementById('inputCode');
+    const outputCode = document.getElementById('outputCode');
+    const typeSelect = document.getElementById('typeSelect');
+    const statsContainer = document.getElementById('statsContainer');
+    const originalSize = document.getElementById('originalSize');
+    const minifiedSize = document.getElementById('minifiedSize');
+    const savingsPercent = document.getElementById('savingsPercent');
+    const copyBtn = document.getElementById('copyBtn');
+
+    minifyBtn.addEventListener('click', async () => {
+      const code = inputCode.value;
+      const type = typeSelect.value;
+
+      if (!code.trim()) {
+        alert('Please enter some code to minify');
+        return;
+      }
+
+      minifyBtn.textContent = 'Minifying...';
+      minifyBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/process', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code, type })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          outputCode.value = data.minified;
+          statsContainer.classList.remove('hidden');
+          originalSize.textContent = formatBytes(data.stats.originalSize);
+          minifiedSize.textContent = formatBytes(data.stats.minifiedSize);
+          savingsPercent.textContent = data.stats.savingsPercent + '%';
+        } else {
+          alert('Error: ' + data.error);
+        }
+      } catch (error) {
+        // Fallback client-side minification for demo
+        const result = clientSideMinify(code, type);
+        outputCode.value = result.minified;
+        statsContainer.classList.remove('hidden');
+        originalSize.textContent = formatBytes(result.originalSize);
+        minifiedSize.textContent = formatBytes(result.minifiedSize);
+        savingsPercent.textContent = result.savingsPercent + '%';
+      }
+
+      minifyBtn.textContent = 'Minify Code';
+      minifyBtn.disabled = false;
+    });
+
+    copyBtn.addEventListener('click', () => {
+      outputCode.select();
+      document.execCommand('copy');
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => copyBtn.textContent = 'Copy', 2000);
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function clientSideMinify(code, type) {
+      const originalSize = new Blob([code]).size;
+      let minified = code;
+
+      if (type === 'html') {
+        minified = code
+          .replace(/>\s+</g, '><')
+          .replace(/<!--[\s\S]*?-->/g, '')
+          .replace(/\s{2,}/g, ' ')
+          .replace(/^\s+|\s+$/gm, '')
+          .trim();
+      } else if (type === 'css') {
+        minified = code
+          .replace(/\/\*[\s\S]*?\*\//g, '')
+          .replace(/\s{2,}/g, ' ')
+          .replace(/;\s*}/g, '}')
+          .replace(/{\s+/g, '{')
+          .replace(/;\s+/g, ';')
+          .trim();
+      } else if (type === 'js') {
+        minified = code
+          .replace(/\/\*[\s\S]*?\*\//g, '')
+          .replace(/\/\/.*$/gm, '')
+          .replace(/\s{2,}/g, ' ')
+          .trim();
+      }
+
+      const minifiedSize = new Blob([minified]).size;
+      const savings = originalSize - minifiedSize;
+      const savingsPercent = originalSize > 0 ? ((savings / originalSize) * 100).toFixed(1) : 0;
+
+      return { minified, originalSize, minifiedSize, savingsPercent };
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "html-minifier-pro",
+  "version": "1.0.0",
+  "description": "Minify HTML, CSS & JavaScript instantly",
+  "main": "api/process.js",
+  "dependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "clean-css": "^5.3.3",
+    "uglify-js": "^3.17.4"
+  }
+}
