@@ -2,7 +2,7 @@ const { minify } = require('html-minifier-terser');
 const CleanCSS = require('clean-css');
 const UglifyJS = require('uglify-js');
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-License-Key');
